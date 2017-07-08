@@ -1,4 +1,5 @@
 library(testthat)
+library(data.table)
 
 test_that("Testing dsr_* functions", {
   expect_gt(nrow(dsr_list()), 1)

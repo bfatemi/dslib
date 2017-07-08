@@ -4,6 +4,13 @@ Version: 0.0.0.9000
 Authors@R: person("Bobby", "Fatemi", email = "bfatemi07@gmail.com", role = c("aut", "cre"))
 Description: What the package does (one paragraph).
 Depends: R (>= 3.3.2)
-License: What license is it under?
+License: file LICENSE
 Encoding: UTF-8
 LazyData: true
+Imports: 
+    stringr,
+    data.table,
+    utils,
+    miniCRAN,
+    ninjar
+RoxygenNote: 6.0.1

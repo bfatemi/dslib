@@ -35,7 +35,7 @@ dsr_list <- function(){
 #' @describeIn dsr_repo boolean. True if package exists in dsr
 #' @export
 dsr_pkg_exists <- function(pkg_name = NULL){
-  chk_dat <- dsr_list()[pkg_name][!is.na(Version)]
+  chk_dat <- dsr_list()[Package == pkg_name][!is.na(Version)]
 
   if(nrow(chk_dat)==0)
     return(FALSE)
