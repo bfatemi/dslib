@@ -1,13 +1,33 @@
-# library("miniCRAN")
-# library("devtools")
-# library("stringr")
-#
+library("miniCRAN")
+library("devtools")
+library("stringr")
+
+
+# use RStudio Analytics CRAN mirror
+rstudio <- c(CRAN="https://cran.rstudio.com")
+
+# Specify list of packages to download
+pkgs <- c("devtools", "Rcpp", "rlang", "stringr", "stringi", "httr", "data.table")
+p <- makeDepGraph(pkgs, enhances = TRUE)
+
+r_version <- str_extract(paste0(R.Version()$major, ".", R.Version()$minor), ".\\..")
+
+pkgList <- pkgDep(pkg       = pkgs,
+                  repos     = rstudio,
+                  type      = "source",
+                  depends   = TRUE,
+                  suggests  = TRUE,
+                  enhances  = TRUE,
+                  Rversion  = r_version)
+
+makeRepo(pkgs = pkgList,
+         path = "/home/intusurg/r",
+         repos = rstudio,
+         type = c("source", "win.binary", "mac.binary.el-capitan"),
+         writePACKAGES = TRUE)
+
 # Sys.setenv(R_KEEP_PKG_SOURCE = "yes")
-# Sys.setenv(GITHUB_PAT = "f287eb8fae0c76854c44f7aa3c7b6ed87d71cc4c")
-# Sys.getenv("GITHUB_PAT")
-# getOption("GITHUB_PAT")
 #
-# r_version <- str_extract(paste0(R.Version()$major, ".", R.Version()$minor), ".\\..")
 # src_path <- path.expand("~/dsrepo/src/contrib")
 # bin_path <- path.expand("~/dsrepo/bin/windows/contrib/", r_version, "/")
 #
@@ -104,26 +124,26 @@
 #
 #
 #
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-# oldVers <- data.frame(package=c("foreach", "codetools", "iterators"),
-#                       version=c("1.4.0", "0.2-7", "1.0.5"),
-#                       stringsAsFactors=FALSE)
-# pkgs <- oldVers$package
-# addOldPackage(pkgs, path=rpath, vers=oldVers$version, type="source")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+oldVers <- data.frame(package=c("foreach", "codetools", "iterators"),
+                      version=c("1.4.0", "0.2-7", "1.0.5"),
+                      stringsAsFactors=FALSE)
+pkgs <- oldVers$package
+addOldPackage(pkgs, path=rpath, vers=oldVers$version, type="source")
